@@ -20,7 +20,8 @@
             width: 100%;
             height: 60px;
             z-index: 1000;
-            background-color:rgb(255, 255, 255);
+            color: rgb(144, 163, 252);
+            background-color:rgb(205, 237, 255);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .container-fluid {
@@ -63,51 +64,51 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a id="homeBtn" class="nav-link" href="index.php"  style="color:rgb(144, 163, 252);">Home</a>
+                    <a id="homeBtn" class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="AdminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="color: rgb(144, 163, 252);">
+                    <a class="nav-link dropdown-toggle" href="#" id="AdminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Admin
                     </a>
                     <div class="dropdown-menu" aria-labelledby="AdminDropdown" style="background-color: #ffffff;">
-                        <a class="dropdown-item" id="tambahAdminBtn" href="tambah_admin.php" style="color: rgb(144, 163, 252);">Tambah Admin</a>
-                        <a class="dropdown-item" id="dataAdminBtn" href="data_admin.php" style="color: rgb(144, 163, 252);">Data Admin</a>
+                        <a class="dropdown-item" id="tambahAdminBtn" href="tambah_admin.php"  >Tambah Admin</a>
+                        <a class="dropdown-item" id="dataAdminBtn" href="data_admin.php"  >Data Admin</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="DokterDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="color: rgb(144, 163, 252);">
+                    <a class="nav-link dropdown-toggle" href="#" id="DokterDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Dokter
                     </a>
                     <div class="dropdown-menu" aria-labelledby="DokterDropdown" style="background-color: #ffffff;">
-                        <a class="dropdown-item" id="tambahDokterBtn" href="tambah_dokter.php" style="color: rgb(144, 163, 252);">Tambah Dokter</a>
-                        <a class="dropdown-item" id="dataDokterBtn" href="data_dokter.php" style="color: rgb(144, 163, 252);">Data Dokter</a>
+                        <a class="dropdown-item" id="tambahDokterBtn" href="tambah_dokter.php"  >Tambah Dokter</a>
+                        <a class="dropdown-item" id="dataDokterBtn" href="data_dokter.php"  >Data Dokter</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="JadwalDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="color: rgb(144, 163, 252);">
+                    <a class="nav-link dropdown-toggle" href="#" id="JadwalDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Jadwal
                     </a>
                     <div class="dropdown-menu" aria-labelledby="JadwalDropdown" style="background-color: #ffffff;">
-                        <a class="dropdown-item" id="tambahJadwalBtn" href="tambah_jadwal.php" style="color: rgb(144, 163, 252);">Tambah Jadwal</a>
-                        <a class="dropdown-item" id="dataJadwalBtn" href="data_jadwal.php" style="color: rgb(144, 163, 252);">Data Jadwal</a>
+                        <a class="dropdown-item" id="tambahJadwalBtn" href="tambah_jadwal.php">Tambah Jadwal</a>
+                        <a class="dropdown-item" id="dataJadwalBtn" href="data_jadwal.php">Data Jadwal</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="PasienDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="color: rgb(144, 163, 252);">
+                    <a class="nav-link dropdown-toggle" href="#" id="PasienDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Pasien
                     </a>
                     <div class="dropdown-menu" aria-labelledby="PasienDropdown" style="background-color: #ffffff;">
-                        <a class="dropdown-item" id="tambahPasienBtn" href="tambah_pasien.php" style="color: rgb(144, 163, 252);">Tambah Pasien</a>
-                        <a class="dropdown-item" id="dataPasienBtn" href="data_pasien.php" style="color: rgb(144, 163, 252);">Data Pasien</a>
+                        <a class="dropdown-item" id="tambahPasienBtn" href="tambah_pasien.php">Tambah Pasien</a>
+                        <a class="dropdown-item" id="dataPasienBtn" href="data_pasien.php">Data Pasien</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="PendaftaranDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="color: rgb(144, 163, 252);">
+                    <a class="nav-link dropdown-toggle" href="#" id="PendaftaranDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Pendaftaran
                     </a>
                     <div class="dropdown-menu" aria-labelledby="JadwalDropdown" style="background-color: #ffffff;">
-                        <a class="dropdown-item" id="tambahPendaftaranBtn" href="tambah_pendaftaran.php" style="color: rgb(144, 163, 252);">Tambah Pendaftaran</a>
-                        <a class="dropdown-item" id="dataPendaftaranBtn" href="data_pendaftaran.php" style="color: rgb(144, 163, 252);">Data Pendaftaran</a>
+                        <a class="dropdown-item" id="tambahPendaftaranBtn" href="tambah_pendaftaran.php">Tambah Pendaftaran</a>
+                        <a class="dropdown-item" id="dataPendaftaranBtn" href="data_pendaftaran.php">Data Pendaftaran</a>
                     </div>
                 </li>
             </ul>

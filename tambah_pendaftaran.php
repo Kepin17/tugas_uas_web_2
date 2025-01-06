@@ -42,11 +42,11 @@ include('header_footer.php');
               <option value="">Pilih Dokter</option>
                 <?php
                 include 'koneksi.php';
-                $sql = "SELECT id_dokter, nama_dokter FROM dokter";
+                $sql = "SELECT id_dokter, nama_dokter, spesialisasi FROM dokter";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                   while($row = $result->fetch_assoc()) {
-                    echo '<option value="'.$row['id_dokter'].'">'.$row['nama_dokter'].'</option>';
+                    echo '<option value="'.$row['id_dokter'].'">'.$row['nama_dokter'].' - '.$row['spesialisasi'].'</option>';
                   }
                   } else {
                     echo '<option value="">Kosong</option>';

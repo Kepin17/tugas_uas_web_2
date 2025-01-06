@@ -55,7 +55,7 @@ include('header_footer.php');
 			</thead>
 			<tbody>
 			  <?php
-			  $query = "SELECT pendaftaran.*, pasien.nama_pasien, dokter.nama_dokter 
+			  $query = "SELECT pendaftaran.*, pasien.nama_pasien, dokter.nama_dokter, dokter.spesialisasi
 			  FROM pendaftaran 
 			  JOIN pasien ON pendaftaran.id_pasien = pasien.id_pasien 
 			  JOIN dokter ON pendaftaran.id_dokter = dokter.id_dokter
@@ -66,7 +66,7 @@ include('header_footer.php');
 			  <tr>
 			  	<td><?php echo $no++; ?></td>
 				<td><?php echo $row['nama_pasien']; ?></td>
-				<td><?php echo $row['nama_dokter']; ?></td>
+				<td><?php echo $row['nama_dokter']." - ".$row['spesialisasi']; ?></td>
 				<td><?php echo $row['tanggal_daftar']; ?></td>
 				<td><?php echo $row['keluhan']; ?></td>
 				<td style="text-align: center";>
