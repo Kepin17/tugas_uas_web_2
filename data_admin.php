@@ -8,121 +8,143 @@ include('header_footer.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <title>Data Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        .container-fluid {
+        .modern-container {
             padding: 2rem;
-            background: #f8f9fa;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        .card {
+        .modern-card {
+            background: white;
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            background: white;
-            padding: 20px;
-            margin-bottom: 20px;
+            overflow: hidden;
         }
-        .table {
-            margin-top: 15px;
-            background: white;
-        }
-        .table thead th {
-            background: #007bff;
+        .modern-card-header {
+            background: #2c3e50;
             color: white;
-            border: none;
-            padding: 15px;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .table tbody tr:hover {
-            background-color: #f8f9fa;
-            transition: all 0.3s;
+        .modern-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
         }
-        .btn {
-            margin: 2px;
-            border-radius: 8px;
-            transition: transform 0.2s;
-        }
-        .btn:hover {
-            transform: scale(1.1);
-        }
-        .pesan {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 9999;
-            animation: slideIn 0.5s ease-in-out;
-        }
-        @keyframes slideIn {
-            from { transform: translateX(100%); }
-            to { transform: translateX(0); }
-        }
-        .page-title {
+        .modern-table th {
+            background: #f8f9fa;
             color: #2c3e50;
-            margin-bottom: 20px;
-            font-weight: bold;
+            padding: 1rem;
+            font-weight: 600;
         }
-        .action-buttons {
-            white-space: nowrap;
+        .modern-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        .modern-table tr:hover {
+            background: #f8f9fa;
+        }
+        .modern-button {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            margin: 0 0.2rem;
+            transition: all 0.3s ease;
+        }
+        .modern-button.btn-info { background: #3498db; color: white; }
+        .modern-button.btn-danger { background: #e74c3c; color: white; }
+        .modern-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .add-admin-btn {
+            background: #27ae60;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
     </style>
 </head>
 <body>
-<main>
-    <div class="container-fluid">
-        <div class="card">
-            <h2 class="page-title">
+<main class="modern-container">
+    <div class="modern-card">
+        <div class="modern-card-header">
+            <h3 class="m-0">
                 <i class="fas fa-users-cog mr-2"></i>
                 Data Admin
-            </h2>
-            <div class="table-responsive">
-                <table class="table" id="adminTable">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama Admin</th>
-                            <th>Email Admin</th>
-                            <th>Alamat Admin</th>
-                            <th>Telepon Admin</th>
-                            <th>Edit</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $query = "SELECT * FROM admin";
-                        $result_admin = mysqli_query($conn, $query);
-                        $no = 1;
-                        while ($row = mysqli_fetch_assoc($result_admin)) { ?>
-                        <tr>
-                            <td><?php echo $no++; ?></td>
-                            <td><?php echo $row['nama_admin']; ?></td>
-                            <td><?php echo $row['email']; ?></td>
-                            <td><?php echo $row['alamat']; ?></td>
-                            <td><?php echo $row['telepon']; ?></td>
-                            <td class="action-buttons" style="text-align: center";>
-                                <a href="edit_admin.php?id_admin=<?php echo $row['id_admin']?>" class="btn btn-secondary">
-                                    <i class="fas fa-marker"></i>
-                                </a>
-                                <a href="delete_admin.php?id_admin=<?php echo $row['id_admin']?>" class="btn btn-danger" onclick="return confirm('yakin mau hapus?')">
-                                    <i class="far fa-trash-alt"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-            </div>
+            </h3>
+            <a href="tambah_admin.php" class="add-admin-btn">
+                <i class="fas fa-plus"></i>
+                Tambah Admin
+            </a>
+        </div>
+        <div class="table-responsive">
+            <table class="modern-table" id="adminTable">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>nama admin</th>
+                        <th>alamat</th>
+                        <th>telepon</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $query = "SELECT * FROM admin";
+                    $result = mysqli_query($conn, $query);
+                    $no = 1;
+                    while ($row = mysqli_fetch_assoc($result)) { ?>
+                    <tr>
+                        <td><?php echo $no++; ?></td>
+                        <td><?php echo $row['username']; ?></td>
+                        <td><?php echo $row['email']; ?></td>
+                        <td><?php echo $row['nama_admin']; ?></td>
+                        <td><?php echo $row['alamat']; ?></td>
+                        <td><?php echo $row['telepon']; ?></td>
+                        <td class="text-center">
+                            <a href="edit_admin.php?id_admin=<?php echo $row['id_admin']?>" 
+                               class="modern-button btn btn-info btn-sm">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a href="delete_admin.php?id_admin=<?php echo $row['id_admin']?>" 
+                               class="modern-button btn btn-danger btn-sm"
+                               onclick="return confirm('Apakah anda yakin ingin menghapus admin ini?')">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
         </div>
     </div>
-    <div class="pesan">
-        <?php if (isset($_SESSION['message'])) { ?>
-            <div class="alert alert-<?= $_SESSION['message_type']?> alert-dismissible fade show" role="alert">
-                <?= $_SESSION['message']?>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        <?php } ?>
-    </div>
 </main>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const table = document.getElementById('adminTable');
+        const rows = table.getElementsByTagName('tr');
+        
+        for (let i = 0; i < rows.length; i++) {
+            rows[i].addEventListener('mouseover', function() {
+                this.style.transform = 'scale(1.01)';
+                this.style.transition = 'all 0.2s ease';
+            });
+            
+            rows[i].addEventListener('mouseout', function() {
+                this.style.transform = 'scale(1)';
+            });
+        }
+    });
+</script>
 </body>
 </html>
