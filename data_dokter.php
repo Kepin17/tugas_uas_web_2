@@ -8,88 +8,59 @@ include('header_footer.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Data Dokter</title>
-	<style>
-		.pesan {
-            position: absolute;
-            top: 65px;
-            right: 85px;
-            z-index: 999;
-            text-align: center;
-        }
-		.data {
-			position: absolute;
-			width: 1400px;
-			margin-top: -10px;
-			margin-left: 50px;
-			z-index: 998;
-		}
-		.table_title {
-        color: #000000;
-        border: 1px solid black;
-		text-align: center;
-        }
-        .table_title th {
-        background: #FFEF00;
-        border: 1px solid black;
-        }
-		table, th, td {
-		border: 1px solid black !important;
-		border-collapse: collapse;
-		}
-	</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-<main>
-	<div class="data">
-		<table class="table table-bordered";>
-			<thead>
-			  <tr class="table_title">
-			  	<th>No</th>
-				<th>Nama Dokter</th>
-				<th>Spesialisasi Dokter</th>
-				<th>Email Dokter</th>
-				<th>Alamat Dokter</th>
-				<th>Telepon Dokter</th>
-				<th>Status Dokter</th>
-				<th>Edit</th>
-			  </tr>
-			</thead>
-			<tbody>
-			  <?php
-			  $query = "SELECT * FROM dokter";
-			  $result_dokter = mysqli_query($conn, $query);
-			  $no = 1;
-			  while($row = mysqli_fetch_assoc($result_dokter)) { ?>
-			  <tr>
-			  	<td><?php echo $no++; ?></td>
-				<td><?php echo $row['nama_dokter']; ?></td>
-				<td><?php echo $row['spesialisasi']; ?></td>
-				<td><?php echo $row['email']; ?></td>
-				<td><?php echo $row['alamat']; ?></td>
-				<td><?php echo $row['telepon']; ?></td>
-				<td><?php echo $row['status']; ?></td>
-				<td style="text-align: center";>
-					<a href="edit_dokter.php?id_dokter=<?php echo $row['id_dokter']?>" class="btn btn-secondary">
-                        <i class="fas fa-marker"></i>
-                    </a>
-				  	<a href="delete_dokter.php?id_dokter=<?php echo $row['id_dokter']?>" class="btn btn-danger" onclick="return confirm('yakin mau hapus?')">
-						<i class="far fa-trash-alt"></i>
-				  	</a>
-				</td>
-			  </tr>
-			  <?php } ?>
-			</tbody>
-		</table>
-    </div>
-	<div class="pesan">
-        <?php if (isset($_SESSION['message'])) { ?>
-            <div class="alert alert-<?= $_SESSION['message_type']?> alert-dismissible fade show" role="alert">
-                <?= $_SESSION['message']?>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        <?php } ?>
+<body>
+<main class="modern-container">
+    <div class="modern-card">
+        <div class="modern-card-header">
+            <h3 class="m-0">
+                <i class="fas fa-user-md mr-2"></i>
+                Data Dokter
+            </h3>
+        </div>
+        <div class="table-responsive">
+            <table class="modern-table" id="dokterTable">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Dokter</th>
+                        <th>Spesialisasi</th>
+                        <th>Email</th>
+                        <th>Telepon</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $query = "SELECT * FROM dokter";
+                    $result = mysqli_query($conn, $query);
+                    $no = 1;
+                    while ($row = mysqli_fetch_assoc($result)) { ?>
+                    <tr>
+                        <td><?php echo $no++; ?></td>
+                        <td><?php echo $row['nama_dokter']; ?></td>
+                        <td><?php echo $row['spesialisasi']; ?></td>
+                        <td><?php echo $row['email']; ?></td>
+                        <td><?php echo $row['telepon']; ?></td>
+                        <td class="text-center">
+                            <a href="edit_dokter.php?id=<?php echo $row['id_dokter']?>" 
+                               class="modern-button btn btn-info btn-sm">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a href="delete_dokter.php?id=<?php echo $row['id_dokter']?>" 
+                               class="modern-button btn btn-danger btn-sm"
+                               onclick="return confirm('Apakah anda yakin ingin menghapus dokter ini?')">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </main>
+</body>
+</html>

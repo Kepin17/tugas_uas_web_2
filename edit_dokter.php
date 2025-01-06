@@ -82,6 +82,7 @@ include('header_footer.php');
   <div class="row">
     <div class="col-11 mx-auto">
       <div class="card card-body">
+        
         <form action="edit_dokter.php?id_dokter=<?php echo $_GET['id_dokter']; ?>" method="POST">
           <div class="form-group">
             <input name="nama_dokter" type="text" class="form-control" value="<?php echo $nama_dokter; ?>" placeholder="Update nama">

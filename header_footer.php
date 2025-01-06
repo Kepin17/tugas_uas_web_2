@@ -7,6 +7,7 @@
     <script src="mycss/jquery_min/jquery.min.js"></script>
     <script src="mycss/popper_min/popper.min.js"></script>
     <script src="mycss/bootstrap_min/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
         body {
             padding-top: 80px;
