@@ -18,7 +18,6 @@ CREATE TABLE admin (
 -- Tabel pasien
 CREATE TABLE pasien (
     id_pasien INT AUTO_INCREMENT PRIMARY KEY,
-    nik VARCHAR(20) NOT NULL,
     nama_pasien VARCHAR(100) NOT NULL,
     tanggal_lahir DATE NOT NULL,
     jenis_kelamin ENUM('L', 'P') NOT NULL,

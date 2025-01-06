@@ -18,26 +18,45 @@ include('header_footer.php');
 </head>
 <main class="container">
     <div class="card card-body">
-        <form action="save_admin.php" method="POST">
+        <form action="save_jadwal.php" method="POST">
         <div class="form-group">
-                <input type="text" name="username" class="form-control" placeholder="Username Admin" required>
+            <select name="id_dokter" class="form-control" required>
+              <option value="">Pilih Dokter</option>
+                <?php
+                include 'koneksi.php';
+
+                $sql = "SELECT id_dokter, nama_dokter FROM dokter";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                  while($row = $result->fetch_assoc()) {
+                    echo '<option value="'.$row['id_dokter'].'">'.$row['nama_dokter'].'</option>';
+                  }
+                  } else {
+                    echo '<option value="">Kosong</option>';
+                  }
+                  $conn->close();
+                  ?>
+            </select>
+          </div>
+          <div class="form-group">
+          <label for="hari_praktek">Hari Praktek</label>
+                <select name="hari_praktek" class="form-control" required>
+                    <option value="Senin">Senin</option>
+                    <option value="Selasa">Selasa</option>
+                    <option value="Rabu">Rabu</option>
+                    <option value="Kamis">Kamis</option>
+                    <option value="Jumat">Jumat</option>
+                    <option value="Sabtu">Sabtu</option>
+                    <option value="Minggu">Minggu</option>
+                </select>
+          </div>
+            <div class="form-group">
+                <input type="time" name="jam_mulai" class="form-control" placeholder="Jam Mulai" required>
             </div>
             <div class="form-group">
-                <input type="text" name="password" class="form-control" placeholder="Password Admin" required>
+                <input type="time" name="jam_selesai" class="form-control" placeholder="Jam Selesai" required>
             </div>
-            <div class="form-group">
-                <input type="text" name="nama_admin" class="form-control" placeholder="Nama Admin" required>
-            </div>
-            <div class="form-group">
-                <input type="text" name="email" class="form-control" placeholder="Email Admin" required>
-            </div>
-            <div class="form-group">
-                <input type="text" name="alamat" class="form-control" placeholder="Alamat Admin" required>
-            </div>
-            <div class="form-group">
-                <input type="text" name="telepon" class="form-control" placeholder="Telepon Admin" required>
-            </div>
-            <input type="submit" name="save_admin" class="btn btn-primary btn-block" value="Simpan Admin">
+            <input type="submit" name="save_jadwal" class="btn btn-primary btn-block" value="Simpan Jadwal">
         </form>
     </div>
 </main>

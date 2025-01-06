@@ -46,7 +46,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="mr-3">
-            <img src="gambar/logo_duba.png" alt="Logo" style="width: 90px; height: 90px;">
+            <img src="gambar/rslogo.png" alt="Logo" style="width: 90px; height: 50px;">
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

@@ -23,7 +23,7 @@ include('header_footer.php');
                 <input type="text" name="username" class="form-control" placeholder="Username Admin" required>
             </div>
             <div class="form-group">
-                <input type="text" name="password" class="form-control" placeholder="Password Admin" required>
+                <input type="password" name="password" class="form-control" placeholder="Password Admin" required>
             </div>
             <div class="form-group">
                 <input type="text" name="nama_admin" class="form-control" placeholder="Nama Admin" required>

@@ -56,9 +56,9 @@ include('header_footer.php');
 			<tbody>
 			  <?php
 			  $query = "SELECT jadwal.*, dokter.nama_dokter FROM jadwal JOIN dokter ON jadwal.id_dokter = dokter.id_dokter";
-			  $result_Pasien = mysqli_query($conn, $query);
+			  $result_jadwal = mysqli_query($conn, $query);
 			  $no = 1;
-			  while($row = mysqli_fetch_assoc($result_Pasien)) { ?>
+			  while($row = mysqli_fetch_assoc($result_jadwal)) { ?>
 			  <tr>
 			  	<td><?php echo $no++; ?></td>
 				<td><?php echo $row['nama_dokter']; ?></td>

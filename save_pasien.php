@@ -9,17 +9,15 @@ function clean_input($data) {
     return $data;
 }
 
-if (isset($_POST['save_admin'])) {
-    $username = clean_input($_POST['username']);
-    $password = clean_input($_POST['password']);
-    $nama_admin = clean_input($_POST['nama_admin']);
-    $email = clean_input($_POST['email']);
-    $alamat = clean_input($_POST['alamat']);
-    $telepon = clean_input($_POST['telepon']);
+if (isset($_POST['save_jadwal'])) {
+    $id_dokter = clean_input($_POST['id_dokter']);
+    $hari_praktek = clean_input($_POST['hari_praktek']);
+    $jam_mulai = clean_input($_POST['jam_mulai']);
+    $jam_selesai = clean_input($_POST['jam_selesai']);
 
-    $query = "INSERT INTO admin (username, password, nama_admin, email, alamat, telepon) VALUES (?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO jadwal (id_dokter, hari_praktek, jam_mulai, jam_selesai) VALUES (?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "ssssss",$username, $password, $nama_admin, $email, $alamat, $telepon);
+    mysqli_stmt_bind_param($stmt, "isss",$id_dokter, $hari_praktek, $jam_mulai, $jam_selesai);
     $result = mysqli_stmt_execute($stmt);
 
     if (!$result) {
@@ -28,7 +26,7 @@ if (isset($_POST['save_admin'])) {
 
     $_SESSION['message'] = 'Data berhasil disimpan';
     $_SESSION['message_type'] = 'success';
-    header('Location: data_admin.php');
+    header('Location: data_jadwal.php');
     exit();
 }
 

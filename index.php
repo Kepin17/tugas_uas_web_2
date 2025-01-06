@@ -14,24 +14,26 @@ include('script.html');
     <style>
 		.logo1 img{
             position: absolute;
-            left: 570px;
-            margin-top: -160px;
-			width: 400px; 
-			height: 400px;
+            left: 50%;
+			transform: translateX(-50%);
+            margin-top: 00px;
+			width: 270px; 
+			height: 150px;
     	}
 		.prgf{
 			position: absolute;
-			left: 500px;
+			left: 50%;
+			transform: translateX(-50%);
 			margin-top: 200px;
 		}
     </style>
 </head>
 <body>
 	<div class="logo1">
-		<img src="gambar/logo_duba.png">
+		<img src="gambar/rslogo.png">
 	</div>
 	<div class="prgf";>
-		<h4>Selamat datang di Toko Duta Bangsa, Surakarta.</h4>
+		<h4>Selamat datang di Rumah Sakit Medika Care, Surakarta.</h4>
 	</div>
 </body>
 </html>

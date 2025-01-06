@@ -46,30 +46,34 @@ include('header_footer.php');
 			<thead>
 			  <tr class="table_title">
 			  	<th>No</th>
-				<th>Nama Dokter</th>
-				<th>Hari Praktek</th>
-				<th>Jam Mulai</th>
+				<th>Nama Pasien</th>
+				<th>Tanggal Lahir</th>
+				<th>Jenis Kelamin</th>
+				<th>Email</th>
+				<th>Alamat</th>
 				<th>Jam Selesai</th>
-				<th>Edit</th>
+				<th>Telepon</th>
 			  </tr>
 			</thead>
 			<tbody>
 			  <?php
-			  $query = "SELECT * FROM Pasien";
-			  $result_Pasien = mysqli_query($conn, $query);
+			  $query = "SELECT * FROM pasien";
+			  $result_pasien = mysqli_query($conn, $query);
 			  $no = 1;
-			  while($row = mysqli_fetch_assoc($result_Pasien)) { ?>
+			  while($row = mysqli_fetch_assoc($result_pasien)) { ?>
 			  <tr>
 			  	<td><?php echo $no++; ?></td>
 				<td><?php echo $row['nama_dokter']; ?></td>
-				<td><?php echo $row['hari_praktek']; ?></td>
-				<td><?php echo $row['jam_mulai']; ?></td>
-				<td><?php echo $row['jam_selesai']; ?></td>
+				<td><?php echo $row['tanggal_lahir']; ?></td>
+				<td><?php echo $row['jenis_kelamin']; ?></td>
+				<td><?php echo $row['email']; ?></td>
+				td><?php echo $row['alamat']; ?></td>
+				<td><?php echo $row['telepon']; ?></td>
 				<td style="text-align: center";>
-					<a href="edit_pasien.php?id_jadwal=<?php echo $row['id_jadwal']?>" class="btn btn-secondary">
+					<a href="edit_pasien.php?id_pasien=<?php echo $row['id_pasien']?>" class="btn btn-secondary">
                         <i class="fas fa-marker"></i>
                     </a>
-				  	<a href="delete_pasien.php?id_jadwal=<?php echo $row['id_jadwal']?>" class="btn btn-danger" onclick="return confirm('yakin mau hapus?')">
+				  	<a href="delete_pasien.php?id_pasien=<?php echo $row['id_pasien']?>" class="btn btn-danger" onclick="return confirm('yakin mau hapus?')">
 						<i class="far fa-trash-alt"></i>
 				  	</a>
 				</td>
