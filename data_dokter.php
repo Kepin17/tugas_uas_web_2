@@ -46,9 +46,9 @@ include('header_footer.php');
 			<thead>
 			  <tr class="table_title">
 			  	<th>No</th>
-				<th>Doctor Name</th>
+				<th>Nama Dokter</th>
 				<th>Spesialisasi Dokter</th>
-				<th>Email Doctor</th>
+				<th>Email Dokter</th>
 				<th>Alamat Dokter</th>
 				<th>Telepon Dokter</th>
 				<th>Status Dokter</th>
