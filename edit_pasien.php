@@ -7,7 +7,7 @@ $tanggal_lahir = '';
 $jenis_kelamin = '';
 $email = '';
 $alamat = '';
-$jam_selesai = '';
+$telepon = '';
 
 if (isset($_GET['id_pasien'])) {
     $id_pasien = mysqli_real_escape_string($conn, $_GET['id_pasien']);
@@ -25,7 +25,7 @@ if (isset($_GET['id_pasien'])) {
             $jenis_kelamin = $row['jenis_kelamin'];
             $email = $row['email'];
             $alamat = $row['alamat'];
-            $jam_selesai = $row['jam_selesai'];
+            $telepon = $row['telepon'];
         }
     } else {
         die("Query failed: " . mysqli_error($conn));
@@ -38,7 +38,7 @@ if (isset($_POST['update'])) {
     $jenis_kelamin = mysqli_real_escape_string($conn, $_POST['jenis_kelamin']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $alamat = mysqli_real_escape_string($conn, $_POST['alamat']);
-    $jam_selesai = mysqli_real_escape_string($conn, $_POST['jam_selesai']);
+    $telepon = mysqli_real_escape_string($conn, $_POST['telepon']);
 
     $query = "UPDATE pasien SET 
                 nama_pasien='$nama_pasien', 
@@ -46,7 +46,7 @@ if (isset($_POST['update'])) {
                 jenis_kelamin='$jenis_kelamin', 
                 email='$email',
                 alamat='$alamat', 
-                jam_selesai='$jam_selesai'
+                telepon='$telepon'
               WHERE id_pasien='$id_pasien'";
 
     if (mysqli_query($conn, $query)) {
@@ -103,7 +103,7 @@ include('header_footer.php');
             <input name="alamat" type="text" class="form-control" value="<?php echo $alamat; ?>" placeholder="Update alamat">
           </div>
           <div class="form-group">
-            <input name="jam_selesai" type="text" class="form-control" value="<?php echo $jam_selesai; ?>" placeholder="Update jam selesai">
+            <input name="telepon" type="text" class="form-control" value="<?php echo $telepon; ?>" placeholder="Update telepon">
           </div>
           <button class="btn btn-warning btn-block" name="update">Simpan Perubahan</button>
         </form>

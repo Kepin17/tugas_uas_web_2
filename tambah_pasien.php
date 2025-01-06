@@ -43,8 +43,12 @@ include('header_footer.php');
                         </select>
                     </div>
                 </div>
-                
                 <div class="col-md-6">
+                    <div class="modern-form-group">
+                            <i class="fas fa-envelope modern-input-icon"></i>
+                            <input type="email" name="email" class="modern-input" 
+                                   placeholder="Email" required>
+                        </div>
                     <div class="modern-form-group">
                         <i class="fas fa-map-marker-alt modern-input-icon"></i>
                         <textarea name="alamat" class="modern-input" 
@@ -57,11 +61,6 @@ include('header_footer.php');
                                placeholder="Nomor Telepon" required>
                     </div>
                     
-                    <div class="modern-form-group">
-                        <i class="fas fa-notes-medical modern-input-icon"></i>
-                        <textarea name="keluhan" class="modern-input" 
-                                  placeholder="keluhan"></textarea>
-                    </div>
                 </div>
             </div>
             

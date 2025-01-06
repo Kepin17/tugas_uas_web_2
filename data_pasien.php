@@ -51,8 +51,8 @@ include('header_footer.php');
 				<th>Jenis Kelamin</th>
 				<th>Email</th>
 				<th>Alamat</th>
-				<th>Jam Selesai</th>
 				<th>Telepon</th>
+				<th>Aksi</th>
 			  </tr>
 			</thead>
 			<tbody>
@@ -63,11 +63,11 @@ include('header_footer.php');
 			  while($row = mysqli_fetch_assoc($result_pasien)) { ?>
 			  <tr>
 			  	<td><?php echo $no++; ?></td>
-				<td><?php echo $row['nama_dokter']; ?></td>
+				<td><?php echo $row['nama_pasien']; ?></td>
 				<td><?php echo $row['tanggal_lahir']; ?></td>
 				<td><?php echo $row['jenis_kelamin']; ?></td>
 				<td><?php echo $row['email']; ?></td>
-				td><?php echo $row['alamat']; ?></td>
+				<td><?php echo $row['alamat']; ?></td>
 				<td><?php echo $row['telepon']; ?></td>
 				<td style="text-align: center";>
 					<a href="edit_pasien.php?id_pasien=<?php echo $row['id_pasien']?>" class="btn btn-secondary">

@@ -9,15 +9,17 @@ function clean_input($data) {
     return $data;
 }
 
-if (isset($_POST['save_jadwal'])) {
-    $id_dokter = clean_input($_POST['id_dokter']);
-    $hari_praktek = clean_input($_POST['hari_praktek']);
-    $jam_mulai = clean_input($_POST['jam_mulai']);
-    $jam_selesai = clean_input($_POST['jam_selesai']);
+if (isset($_POST['save_pasien'])) {
+    $nama_pasien = clean_input($_POST['nama_pasien']);
+    $tanggal_lahir = clean_input($_POST['tanggal_lahir']);
+    $jenis_kelamin = clean_input($_POST['jenis_kelamin']);
+    $email = clean_input($_POST['email']);
+    $alamat = clean_input($_POST['alamat']);
+    $telepon = clean_input($_POST['telepon']);
 
-    $query = "INSERT INTO jadwal (id_dokter, hari_praktek, jam_mulai, jam_selesai) VALUES (?, ?, ?, ?)";
+    $query = "INSERT INTO pasien (nama_pasien, tanggal_lahir, jenis_kelamin, email, alamat, telepon) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "isss",$id_dokter, $hari_praktek, $jam_mulai, $jam_selesai);
+    mysqli_stmt_bind_param($stmt, "ssssss",$nama_pasien, $tanggal_lahir, $jenis_kelamin, $email, $alamat, $telepon);
     $result = mysqli_stmt_execute($stmt);
 
     if (!$result) {
@@ -26,7 +28,7 @@ if (isset($_POST['save_jadwal'])) {
 
     $_SESSION['message'] = 'Data berhasil disimpan';
     $_SESSION['message_type'] = 'success';
-    header('Location: data_jadwal.php');
+    header('Location: data_pasien.php');
     exit();
 }
 
