@@ -42,6 +42,7 @@
 			z-index: 1000;
 			background-color: #ffffff;
 			color:rgb(55, 0, 255);
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
         }
 
 
