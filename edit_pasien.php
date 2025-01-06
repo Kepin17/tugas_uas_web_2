@@ -5,8 +5,8 @@ include("koneksi.php");
 $nama_pasien = '';
 $tanggal_lahir = '';
 $jenis_kelamin = '';
-$jam_selesai = '';
-$jam_mulai = '';
+$email = '';
+$alamat = '';
 $jam_selesai = '';
 
 if (isset($_GET['id_pasien'])) {
@@ -23,8 +23,8 @@ if (isset($_GET['id_pasien'])) {
             $nama_pasien = $row['nama_pasien'];
             $tanggal_lahir = $row['tanggal_lahir'];
             $jenis_kelamin = $row['jenis_kelamin'];
-            $jam_selesai = $row['jam_selesai'];
-            $jam_mulai = $row['jam_mulai'];
+            $email = $row['email'];
+            $alamat = $row['alamat'];
             $jam_selesai = $row['jam_selesai'];
         }
     } else {
@@ -36,16 +36,16 @@ if (isset($_POST['update'])) {
     $nama_pasien = mysqli_real_escape_string($conn, $_POST['nama_pasien']);
     $tanggal_lahir = mysqli_real_escape_string($conn, $_POST['tanggal_lahir']);
     $jenis_kelamin = mysqli_real_escape_string($conn, $_POST['jenis_kelamin']);
-    $jam_selesai = mysqli_real_escape_string($conn, $_POST['jam_selesai']);
-    $jam_mulai = mysqli_real_escape_string($conn, $_POST['jam_mulai']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $alamat = mysqli_real_escape_string($conn, $_POST['alamat']);
     $jam_selesai = mysqli_real_escape_string($conn, $_POST['jam_selesai']);
 
     $query = "UPDATE pasien SET 
                 nama_pasien='$nama_pasien', 
                 tanggal_lahir='$tanggal_lahir', 
                 jenis_kelamin='$jenis_kelamin', 
-                jam_selesai='$jam_selesai',
-                jam_mulai='$jam_mulai', 
+                email='$email',
+                alamat='$alamat', 
                 jam_selesai='$jam_selesai'
               WHERE id_pasien='$id_pasien'";
 
@@ -97,10 +97,10 @@ include('header_footer.php');
                 </select>
           </div>
           <div class="form-group">
-            <input name="jam_mulai" type="text" class="form-control" value="<?php echo $jam_mulai; ?>" placeholder="Update jam mulai">
+            <input name="email" type="email" class="form-control" value="<?php echo $email; ?>" placeholder="Update email">
           </div>
           <div class="form-group">
-            <input name="jam_mulai" type="text" class="form-control" value="<?php echo $jam_mulai; ?>" placeholder="Update jam mulai">
+            <input name="alamat" type="text" class="form-control" value="<?php echo $alamat; ?>" placeholder="Update alamat">
           </div>
           <div class="form-group">
             <input name="jam_selesai" type="text" class="form-control" value="<?php echo $jam_selesai; ?>" placeholder="Update jam selesai">
