@@ -2,26 +2,27 @@
 session_start();
 include("koneksi.php");
 
+$nama_pasien = '';
 $nama_dokter = '';
-$hari_praktek = '';
-$jam_mulai = '';
-$jam_selesai = '';
+$tanggal_daftar = '';
+$keluhan = '';
 
-if (isset($_GET['id_jadwal'])) {
-    $id_jadwal = mysqli_real_escape_string($conn, $_GET['id_jadwal']);
+if (isset($_GET['id_pendaftaran'])) {
+    $id_pendaftaran = mysqli_real_escape_string($conn, $_GET['id_pendaftaran']);
 
-    $query = "SELECT * FROM jadwal WHERE id_jadwal='$id_jadwal'";
+    $query = "SELECT pendaftaran.*, pasien.nama_pasien FROM pendaftaran 
+              JOIN pasien ON pendaftaran.id_pasien = pasien.id_pasien 
+              WHERE pendaftaran.id_pendaftaran = '$id_pendaftaran'";
 
     $result = mysqli_query($conn, $query);
 
     if ($result) {
         if (mysqli_num_rows($result) == 1) {
             $row = mysqli_fetch_array($result);
-
+            $nama_pasien = $row['nama_pasien'];
             $id_dokter = $row['id_dokter'];
-            $hari_praktek = $row['hari_praktek'];
-            $jam_mulai = $row['jam_mulai'];
-            $jam_selesai = $row['jam_selesai'];
+            $tanggal_daftar = $row['tanggal_daftar'];
+            $keluhan = $row['keluhan'];
         }
     } else {
         die("Query failed: " . mysqli_error($conn));
@@ -30,22 +31,18 @@ if (isset($_GET['id_jadwal'])) {
 
 if (isset($_POST['update'])) {
     $id_dokter = mysqli_real_escape_string($conn, $_POST['id_dokter']);
-    $hari_praktek = mysqli_real_escape_string($conn, $_POST['hari_praktek']);
-    $jam_mulai = mysqli_real_escape_string($conn, $_POST['jam_mulai']);
-    $jam_selesai = mysqli_real_escape_string($conn, $_POST['jam_selesai']);
+    $keluhan = mysqli_real_escape_string($conn, $_POST['keluhan']);
 
-    $query = "UPDATE jadwal SET 
+    $query = "UPDATE pendaftaran SET 
                 id_dokter='$id_dokter', 
-                hari_praktek='$hari_praktek', 
-                jam_mulai='$jam_mulai', 
-                jam_selesai='$jam_selesai'
-              WHERE id_jadwal='$id_jadwal'";
+                keluhan='$keluhan'
+              WHERE id_pendaftaran='$id_pendaftaran'";
 
     if (mysqli_query($conn, $query)) {
         $_SESSION['message'] = 'Data berhasil dirubah';
         $_SESSION['message_type'] = 'primary';
 
-        header('Location: data_jadwal.php');
+        header('Location: data_pendaftaran.php');
     } else {
       
         die("Update failed: " . mysqli_error($conn));
@@ -74,13 +71,15 @@ include('header_footer.php');
   <div class="row">
     <div class="col-11 mx-auto">
       <div class="card card-body">
-        <form action="edit_jadwal.php?id_jadwal=<?php echo $_GET['id_jadwal']; ?>" method="POST">
+        <form action="edit_pendaftaran.php?id_pendaftaran=<?php echo $_GET['id_pendaftaran']; ?>" method="POST">
+        <div class="form-group">
+          <input name="nama_pasien" type="text" class="form-control" value="<?php echo $nama_pasien; ?>" readonly>
+        </div>
         <div class="form-group">
             <select name="id_dokter" class="form-control" required>
               <option value="">Pilih Dokter</option>
                 <?php
                 include 'koneksi.php';
-
                 $sql = "SELECT id_dokter, nama_dokter FROM dokter";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
@@ -96,22 +95,10 @@ include('header_footer.php');
             </select>
           </div>
           <div class="form-group">
-          <label for="hari_praktek">Hari Praktek</label>
-                <select name="hari_praktek" class="form-control" required>
-                    <option value="Senin">Senin</option>
-                    <option value="Selasa">Selasa</option>
-                    <option value="Rabu">Rabu</option>
-                    <option value="Kamis">Kamis</option>
-                    <option value="Jumat">Jumat</option>
-                    <option value="Sabtu">Sabtu</option>
-                    <option value="Minggu">Minggu</option>
-                </select>
+            <input name="tanggal_daftar" type="date" class="form-control" value="<?php echo $tanggal_daftar; ?>" readonly>
           </div>
           <div class="form-group">
-            <input name="jam_mulai" type="text" class="form-control" value="<?php echo $jam_mulai; ?>" placeholder="Update jam mulai">
-          </div>
-          <div class="form-group">
-            <input name="jam_selesai" type="text" class="form-control" value="<?php echo $jam_selesai; ?>" placeholder="Update jam selesai">
+            <input name="keluhan" type="text" class="form-control" value="<?php echo $keluhan; ?>" placeholder="Update keluhan">
           </div>
           <button class="btn btn-warning btn-block" name="update">Simpan Perubahan</button>
         </form>

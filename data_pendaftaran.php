@@ -46,30 +46,34 @@ include('header_footer.php');
 			<thead>
 			  <tr class="table_title">
 			  	<th>No</th>
+				<th>Nama Pasien</th>
 				<th>Nama Dokter</th>
-				<th>Hari Praktek</th>
-				<th>Jam Mulai</th>
-				<th>Jam Selesai</th>
+				<th>Tanggal Daftar</th>
+				<th>Keluhan</th>
 				<th>Edit</th>
 			  </tr>
 			</thead>
 			<tbody>
 			  <?php
-			  $query = "SELECT jadwal.*, dokter.nama_dokter FROM jadwal JOIN dokter ON jadwal.id_dokter = dokter.id_dokter";
-			  $result_Pasien = mysqli_query($conn, $query);
+			  $query = "SELECT pendaftaran.*, pasien.nama_pasien, dokter.nama_dokter 
+			  FROM pendaftaran 
+			  JOIN pasien ON pendaftaran.id_pasien = pasien.id_pasien 
+			  JOIN dokter ON pendaftaran.id_dokter = dokter.id_dokter
+			  ";
+			  $result_all = mysqli_query($conn, $query);
 			  $no = 1;
-			  while($row = mysqli_fetch_assoc($result_Pasien)) { ?>
+			  while($row = mysqli_fetch_assoc($result_all)) { ?>
 			  <tr>
 			  	<td><?php echo $no++; ?></td>
+				<td><?php echo $row['nama_pasien']; ?></td>
 				<td><?php echo $row['nama_dokter']; ?></td>
-				<td><?php echo $row['hari_praktek']; ?></td>
-				<td><?php echo $row['jam_mulai']; ?></td>
-				<td><?php echo $row['jam_selesai']; ?></td>
+				<td><?php echo $row['tanggal_daftar']; ?></td>
+				<td><?php echo $row['keluhan']; ?></td>
 				<td style="text-align: center";>
-					<a href="edit_jadwal.php?id_jadwal=<?php echo $row['id_jadwal']?>" class="btn btn-secondary">
+					<a href="edit_pendaftaran.php?id_pendaftaran=<?php echo $row['id_pendaftaran']?>" class="btn btn-secondary">
                         <i class="fas fa-marker"></i>
                     </a>
-				  	<a href="delete_jadwal.php?id_jadwal=<?php echo $row['id_jadwal']?>" class="btn btn-danger" onclick="return confirm('yakin mau hapus?')">
+				  	<a href="delete_pendaftaran.php?id_pendaftaran=<?php echo $row['id_pendaftaran']?>" class="btn btn-danger" onclick="return confirm('yakin mau hapus?')">
 						<i class="far fa-trash-alt"></i>
 				  	</a>
 				</td>

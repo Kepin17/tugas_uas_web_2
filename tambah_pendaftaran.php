@@ -18,13 +18,30 @@ include('header_footer.php');
 </head>
 <main class="container">
     <div class="card card-body">
-        <form action="save_jadwal.php" method="POST">
+        <form action="save_pendaftaran.php" method="POST">
         <div class="form-group">
+            <select name="id_pasien" class="form-control" required>
+              <option value="">Pilih Pasien</option>
+                <?php
+                include 'koneksi.php';
+                $sql = "SELECT id_pasien, nama_pasien FROM pasien";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                  while($row = $result->fetch_assoc()) {
+                    echo '<option value="'.$row['id_pasien'].'">'.$row['nama_pasien'].'</option>';
+                  }
+                  } else {
+                    echo '<option value="">Kosong</option>';
+                  }
+                  $conn->close();
+                  ?>
+            </select>
+          </div>
+          <div class="form-group">
             <select name="id_dokter" class="form-control" required>
               <option value="">Pilih Dokter</option>
                 <?php
                 include 'koneksi.php';
-
                 $sql = "SELECT id_dokter, nama_dokter FROM dokter";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
@@ -38,25 +55,13 @@ include('header_footer.php');
                   ?>
             </select>
           </div>
-          <div class="form-group">
-          <label for="hari_praktek">Hari Praktek</label>
-                <select name="hari_praktek" class="form-control" required>
-                    <option value="Senin">Senin</option>
-                    <option value="Selasa">Selasa</option>
-                    <option value="Rabu">Rabu</option>
-                    <option value="Kamis">Kamis</option>
-                    <option value="Jumat">Jumat</option>
-                    <option value="Sabtu">Sabtu</option>
-                    <option value="Minggu">Minggu</option>
-                </select>
-          </div>
             <div class="form-group">
-                <input type="time" name="jam_mulai" class="form-control" placeholder="Jam Mulai" required>
+              <input type="date" name="tanggal_daftar" class="form-control" placeholder="Tanggal Daftar" required>
             </div>
             <div class="form-group">
-                <input type="time" name="jam_selesai" class="form-control" placeholder="Jam Selesai" required>
+                <input type="text" name="keluhan" class="form-control" placeholder="Keluhan" required>
             </div>
-            <input type="submit" name="save_jadwal" class="btn btn-primary btn-block" value="Simpan Jadwal">
+            <input type="submit" name="save_pendaftaran" class="btn btn-primary btn-block" value="Simpan Pendaftaran">
         </form>
     </div>
 </main>
