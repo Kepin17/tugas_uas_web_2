@@ -1,0 +1,53 @@
+<script>
+	$(document).ready(function(){
+		function loadContent(url){
+			$.get(url, function(data){
+				$("#mainContent").html(data);
+			});
+		}
+		$("#homeBtn").click(function(){
+			loadContent("index.php");
+		});
+
+		$("#tambahAdminBtn").click(function(){
+			loadContent("tambah_admin.php");
+		});
+
+		$("#dataAdminBtn").click(function(){
+			loadContent("data_admin.php");
+		});
+
+		$("#tambahDokterBtn").click(function(){
+			loadContent("tambah_dokter.php");
+		});
+
+		$("#dataDokterBtn").click(function(){
+			loadContent("data_dokter.php");
+		});
+
+		$("#tambahJadwalBtn").click(function(){
+			loadContent("tambah_jadwal.php");
+		});
+
+		$("#dataJadwalBtn").click(function(){
+			loadContent("data_jadwal.php");
+		});
+
+		$("#tambahPasienBtn").click(function(){
+			loadContent("tambah_pasien.php");
+		});
+
+		$("#dataPasienBtn").click(function(){
+			loadContent("data_pasien.php");
+		});
+
+		$("#tambahPendaftaranBtn").click(function(){
+			loadContent("tambah_pendaftaran.php");
+		});
+
+		$("#dataPendaftaranBtn").click(function(){
+			loadContent("data_pendaftaran.php");
+		});
+
+	});
+</script>

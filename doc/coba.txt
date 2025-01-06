@@ -1,0 +1,82 @@
+1. Tabel:
+Tabel Pasien
+
+id_pasien (INT, PRIMARY KEY, AUTO_INCREMENT)
+nama_pasien (VARCHAR)
+alamat (TEXT)
+tanggal_lahir (DATE)
+jenis_kelamin (ENUM('L', 'P'))
+no_telepon (VARCHAR)
+email (VARCHAR, UNIQUE)
+status (ENUM('Aktif', 'Non-Aktif'))
+Tabel Dokter
+
+id_dokter (INT, PRIMARY KEY, AUTO_INCREMENT)
+nama_dokter (VARCHAR)
+spesialis (VARCHAR)
+no_telepon (VARCHAR)
+email (VARCHAR, UNIQUE)
+alamat (TEXT)
+jadwal_kerja (TEXT)
+Tabel Pendaftaran
+
+id_pendaftaran (INT, PRIMARY KEY, AUTO_INCREMENT)
+id_pasien (INT, FOREIGN KEY ke pasien(id_pasien))
+id_dokter (INT, FOREIGN KEY ke dokter(id_dokter))
+tanggal_daftar (DATE)
+status_pendaftaran (ENUM('Menunggu', 'Diterima', 'Batal'))
+keluhan (TEXT)
+Tabel Rekam Medis
+
+id_rekam_medis (INT, PRIMARY KEY, AUTO_INCREMENT)
+id_pasien (INT, FOREIGN KEY ke pasien(id_pasien))
+id_dokter (INT, FOREIGN KEY ke dokter(id_dokter))
+diagnosa (TEXT)
+obat (TEXT)
+tindakan (TEXT)
+tanggal_periksa (DATE)
+Tabel Pembayaran
+
+id_pembayaran (INT, PRIMARY KEY, AUTO_INCREMENT)
+id_pendaftaran (INT, FOREIGN KEY ke pendaftaran(id_pendaftaran))
+tanggal_bayar (DATE)
+total_biaya (DECIMAL)
+metode_bayar (ENUM('Tunai', 'Transfer', 'Kredit'))
+status_bayar (ENUM('Lunas', 'Belum Lunas'))
+
+2. Modul dan Fungsi CRUD:
+Modul Pasien:
+
+Create: Menambahkan pasien baru ke sistem.
+Read: Menampilkan data pasien berdasarkan ID atau nama.
+Update: Mengupdate data pasien (misalnya, alamat atau status).
+Delete: Menghapus data pasien dari sistem.
+Contoh Fungsi: tambah_pasien(), lihat_pasien(), update_pasien(), hapus_pasien()
+Modul Dokter:
+
+Create: Menambahkan data dokter ke sistem.
+Read: Menampilkan daftar dokter atau detail berdasarkan ID.
+Update: Mengupdate informasi dokter (spesialis, jadwal kerja).
+Delete: Menghapus data dokter.
+Contoh Fungsi: tambah_dokter(), lihat_dokter(), update_dokter(), hapus_dokter()
+Modul Pendaftaran:
+
+Create: Mendaftarkan pasien untuk berobat dengan dokter.
+Read: Menampilkan daftar pendaftaran pasien yang terdaftar.
+Update: Mengupdate status pendaftaran (misalnya, dari 'Menunggu' ke 'Diterima').
+Delete: Membatalkan pendaftaran pasien.
+Contoh Fungsi: tambah_pendaftaran(), lihat_pendaftaran(), update_pendaftaran(), hapus_pendaftaran()
+Modul Rekam Medis:
+
+Create: Menambahkan data rekam medis setelah pasien diperiksa oleh dokter.
+Read: Menampilkan rekam medis pasien.
+Update: Mengupdate rekam medis (misalnya, menambah tindakan atau obat).
+Delete: Menghapus rekam medis pasien.
+Contoh Fungsi: tambah_rekam_medis(), lihat_rekam_medis(), update_rekam_medis(), hapus_rekam_medis()
+Modul Pembayaran:
+
+Create: Mencatat pembayaran pasien setelah pelayanan diberikan.
+Read: Menampilkan riwayat pembayaran pasien.
+Update: Mengupdate status pembayaran (misalnya, dari 'Belum Lunas' ke 'Lunas').
+Delete: Menghapus data pembayaran jika ada kesalahan.
+Contoh Fungsi: tambah_pembayaran(), lihat_pembayaran(), update_pembayaran(), hapus_pembayaran()
