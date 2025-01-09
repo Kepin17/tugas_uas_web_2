@@ -93,6 +93,7 @@ include('header_footer.php');
                         <th>Nama Pasien</th>
                         <th>Tanggal Lahir</th>
                         <th>Jenis Kelamin</th>
+                        <th>Email</th>
                         <th>Alamat</th>
                         <th>No. Telepon</th>
                         <th>Aksi</th>
@@ -109,6 +110,7 @@ include('header_footer.php');
                         <td><?php echo $row['nama_pasien']; ?></td>
                         <td><?php echo $row['tanggal_lahir']; ?></td>
                         <td><?php echo $row['jenis_kelamin']; ?></td>
+                        <td><?php echo $row['email']; ?></td>
                         <td><?php echo $row['alamat']; ?></td>
                         <td><?php echo $row['telepon']; ?></td>
                         <td class="text-center">
