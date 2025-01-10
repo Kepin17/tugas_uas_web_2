@@ -113,7 +113,7 @@ include('header_footer.php');
                         <td><?php echo $row['email']; ?></td>
                         <td><?php echo $row['alamat']; ?></td>
                         <td><?php echo $row['telepon']; ?></td>
-                        <td class="text-center">
+                        <td class="text-center d-flex">
                             <a href="edit_pasien.php?id_pasien=<?php echo $row['id_pasien']?>" 
                                class="modern-button btn btn-info btn-sm">
                                 <i class="fas fa-edit"></i>
